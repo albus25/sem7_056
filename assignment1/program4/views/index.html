@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <script language="JavaScript">
+        var ws = new WebSocket('ws://localhost:8000');
+        function sendMessage() {
+            var msg = "Helo";
+            ws.send(msg);
+        }
+        ws.addEventListener("message", function(e){
+            console.log(e.data);
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="Send" onclick="sendMessage()" value="send">
+</body>
+</html>

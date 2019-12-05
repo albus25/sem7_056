@@ -1,0 +1,27 @@
+html
+	head
+		title="Show Student"
+	body
+		a(href="/addStudent") AddStudent
+		table
+			thead
+				tr
+					th StudentName
+					th ContactNo
+					th Email
+					th City
+					th Gender
+					th Edit
+					th Delete
+			tbody
+				each key in data
+					tr
+						td=key.studentName
+						td=key.contactNo
+						td=key.email
+						td=key.city
+						td=key.gender
+						td
+							a(href="editStudent/"+key._id) Edit
+						td
+							a(href="deleteStudent/"+key._id) Delete							

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+  	</script>
+</head>
+<body>
+<form>
+	<table cellspacing="10" cellpadding="10">
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" name="txtName" id="txtName"></td>
+			<td><div id="name"></div></td>
+		</tr>
+
+		<tr>
+			<td>Age</td>
+			<td><input type="text" name="txtAge" id="txtAge"></td>
+			<td><div id="age"></div></td>
+		</tr>
+
+		<tr>
+			<td>Email</td>
+			<td><input type="text" name="txtEmail" id="txtEmail"></td>
+			<td><div id="email"></div></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><button id="btnSub" name="btnSub">Submit</button></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+	$(document).on("click","#btnSub",function () {
+		var txtName = $("#txtName").val();
+		var txtAge = $("#txtAge").val();
+		var txtEmail = $("#txtEmail").val();
+
+		$.ajax({
+			type : 'post',
+			url : '/submitForm',
+			data : {txtName : txtName,txtAge : txtAge,txtEmail : txtEmail},
+			success:function (result) 
+			{
+				alert("Inserted");
+			},
+			error:function(result)
+			{
+				var res = JSON.parse(result.responseText);
+				
+				console.log(res);
+				for(var data in res)
+				{
+					if(res[data].param == "txtName")
+					{
+						$("#name").html(res[data].msg);
+					}	
+					else if(res[data].param == "txtAge")
+					{
+						$("#age").html(res[data].msg);						
+					}
+					else
+					{
+						$("#email").html(res[data].msg);												
+					}
+				}
+			}
+		});
+		return false;
+	});
+</script>

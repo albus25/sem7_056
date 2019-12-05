@@ -1,0 +1,92 @@
+html
+	head
+		title="PugCrud"
+	body
+		if(!data)
+			form(method="post",action="/submitData")
+				table
+					tr
+						td
+							input(type="hidden" name="txtID")
+					tr
+						td 
+							label StudentName : 
+						td 
+							input(type="text" name="txtName")
+					tr
+						td 	
+							label ContactNo :
+						td
+							input(type="text" name="txtCno")
+					tr
+						td 	
+							label Email :
+						td
+							input(type="text" name="txtEmail")
+					tr
+						td
+							label City : 
+						td
+							select(name="comboCity")
+								option(value="Surat") Surat
+								option(value="Nashik") Naskik
+								option(value="Goa") Goa
+					tr
+						td
+							label Gender :
+						td
+							input(type="radio" name="gender" value="Female") 
+							| Female
+							input(type="radio" name="gender" value="Male") 
+							| Male
+					tr
+						td
+						td
+							button(type="submit" name="btnSub") Submit
+		else
+			form(method="post",action="/submitData")
+				table
+					tr
+						td
+							input(type="hidden" name="txtID" value=data._id)
+					tr
+						td 
+							label StudentName : 
+						td 
+							input(type="text" name="txtName" value=data.studentName)
+					tr
+						td 	
+							label ContactNo :
+						td
+							input(type="text" name="txtCno" value=data.contactNo)
+					tr
+						td 	
+							label Email :
+						td
+							input(type="text" name="txtEmail" value=data.email)
+					tr
+						td
+							label City : 
+						td
+							select(name="comboCity")
+								option(value="Surat") Surat
+								option(value="Nashik") Naskik
+								option(value="Goa") Goa
+					tr
+						td
+							label Gender :
+						td
+							if(data.gender=="Female")
+								input(type="radio" name="gender" value="Female" checked) 
+								| Female
+								input(type="radio" name="gender" value="Male") 
+								| Male
+							else
+								input(type="radio" name="gender" value="Female") 
+								| Female
+								input(type="radio" name="gender" value="Male" checked) 
+								| Male								
+					tr
+						td
+						td
+							button(type="submit" name="btnSub") Submit					

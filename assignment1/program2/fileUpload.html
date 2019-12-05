@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>File Upload</title>
+</head>
+<body>
+<!-- Single File -->
+<form method="post" action="/singleFile" enctype="multipart/form-data">
+	<label>Single File:</label>
+	<input type="file" name="single"><br>
+	<input type="submit" name="btnSub" value="Submit">
+</form>
+<br>
+<hr>
+<!-- Multiple File -->
+<form method="post" action="/multipleFiles" enctype="multipart/form-data">
+	<label>Multiple File:</label>
+	<input type="file" name="multiple" multiple><br>
+	<input type="submit" name="btnSub" value="Submit">
+</form>
+</body>
+</html>
